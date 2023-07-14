@@ -1,12 +1,12 @@
 <?php
 
-namespace LaravelLatam\Epayco\Http\Controllers;
+namespace LaravelLatam\Emnify\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use LaravelLatam\Epayco\Epayco;
-use LaravelLatam\Epayco\Http\Middleware\VerifyRedirectUrl;
-use LaravelLatam\Epayco\Payment;
-use Epayco\PaymentIntent as EpaycoPaymentIntent;
+use LaravelLatam\Emnify\Emnify;
+use LaravelLatam\Emnify\Http\Middleware\VerifyRedirectUrl;
+use LaravelLatam\Emnify\Payment;
+use Emnify\PaymentIntent as EmnifyPaymentIntent;
 
 class PaymentController extends Controller
 {
@@ -31,9 +31,9 @@ class PaymentController extends Controller
         return $id;
         /*
         return view('cashier::payment', [
-            'EpaycoKey' => config('cashier.key'),
+            'EmnifyKey' => config('cashier.key'),
             'payment' => new Payment(
-                EpaycoPaymentIntent::retrieve($id, Epayco::stripeOptions())
+                EmnifyPaymentIntent::retrieve($id, Emnify::stripeOptions())
             ),
             'redirect' => request('redirect'),
         ]);*/

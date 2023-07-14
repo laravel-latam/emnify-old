@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelLatam\Epayco\Tests;
+namespace LaravelLatam\Emnify\Tests;
 
 class ExampleTest extends TestCase
 {

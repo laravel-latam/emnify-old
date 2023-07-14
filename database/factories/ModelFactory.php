@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelLatam\Epayco\Database\Factories;
+namespace LaravelLatam\Emnify\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

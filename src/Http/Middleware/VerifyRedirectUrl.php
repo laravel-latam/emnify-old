@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelLatam\Epayco\Http\Middleware;
+namespace LaravelLatam\Emnify\Http\Middleware;
 
 use Closure;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;

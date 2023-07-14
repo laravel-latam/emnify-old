@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelLatam\Epayco\View\Components;
+namespace LaravelLatam\Emnify\View\Components;
 
 use Illuminate\View\Component;
 

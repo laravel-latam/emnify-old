@@ -1,12 +1,12 @@
 <?php
 
-namespace LaravelLatam\Epayco\Commands;
+namespace LaravelLatam\Emnify\Commands;
 
 use Illuminate\Console\Command;
 
-class EpaycoCommand extends Command
+class EmnifyCommand extends Command
 {
-    public $signature = 'epayco';
+    public $signature = 'emnify';
 
     public $description = 'My command';
 

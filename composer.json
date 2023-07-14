@@ -1,40 +1,46 @@
 {
-    "name": "laravel-latam/epayco",
-    "description": "Epayco Laravel Package",
+    "name": "laravel-latam/emnify",
+    "description": "Emnify Laravel Package",
     "keywords": [
         "laravel",
         "latam",
-        "epayco"
+        "laravel-latam"
     ],
-    "homepage": "https://github.com/laravellatam/epayco",
+    "homepage": "https://github.com/laravel-latam/emnify",
     "license": "MIT",
     "authors": [
         {
             "name": "Neftalí Yagua",
             "email": "despacho@neftaliyagua.com",
-            "homepage": "https://spatie.be",
+            "homepage": "https://github.com/laravel-latam",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.3|^8.0",
-        "epayco/epayco-php": "^1.4",
-        "illuminate/contracts": "^8.0"
+        "php": "^8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "coderic-ecosystem/emnify-sdk": "dev-master",
+        "firebase/php-jwt": "^6.8",
+        "guzzlehttp/guzzle": "^7.7",
+        "illuminate/contracts": "^10",
+        "illuminate/support": "^10",
+        "laravel/framework": "^10"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.3",
-        "vimeo/psalm": "^3.11"
+        "orchestra/testbench": "^8.5.9",
+        "phpunit/phpunit": "^9.3"
     },
     "autoload": {
         "psr-4": {
-            "LaravelLatam\\Epayco\\": "src",
-            "LaravelLatam\\Epayco\\Database\\Factories\\": "database/factories"
+            "LaravelLatam\\Emnify\\": "src",
+            "LaravelLatam\\Emnify\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "LaravelLatam\\Epayco\\Tests\\": "tests"
+            "LaravelLatam\\Emnify\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -48,10 +54,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelLatam\\Epayco\\EpaycoServiceProvider"
+                "LaravelLatam\\Emnify\\EmnifyServiceProvider"
             ],
             "aliases": {
-                "Epayco": "LaravelLatam\\Epayco\\EpaycoFacade"
+                "Emnify": "LaravelLatam\\Emnify\\EmnifyFacade"
             }
         }
     },

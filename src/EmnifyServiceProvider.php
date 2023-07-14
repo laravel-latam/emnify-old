@@ -1,16 +1,16 @@
 <?php
 
-namespace LaravelLatam\Epayco;
+namespace LaravelLatam\Emnify;
 
-use LaravelLatam\Epayco\View\Components\Layout;
-use LaravelLatam\Epayco\View\Components\MenuUser;
-use LaravelLatam\Epayco\Commands\EpaycoCommand;
-use LaravelLatam\Epayco\Http\Middleware\VerifyRedirectUrl;
+use LaravelLatam\Emnify\View\Components\Layout;
+use LaravelLatam\Emnify\View\Components\MenuUser;
+use LaravelLatam\Emnify\Commands\EmnifyCommand;
+use LaravelLatam\Emnify\Http\Middleware\VerifyRedirectUrl;
 
-use Illuminate\Support\Facades\Route;   
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
-class EpaycoServiceProvider extends ServiceProvider
+class EmnifyServiceProvider extends ServiceProvider
 {
     public function boot()
     {
@@ -21,30 +21,29 @@ class EpaycoServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/epayco.php' => config_path('epayco.php'),
+                __DIR__ . '/../config/emnify.php' => config_path('emnify.php'),
             ], 'config');
 
             $this->publishes([
-                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/epayco'),
+                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/emnify'),
             ], 'views');
 
-            $migrationFileName = 'create_epayco_table.php';
-            if (! $this->migrationFileExists($migrationFileName)) {
+            $migrationFileName = 'create-emnify_table.php';
+            if (!$this->migrationFileExists($migrationFileName)) {
                 $this->publishes([
                     __DIR__ . "/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/' . date('Y_m_d_His', time()) . '_' . $migrationFileName),
                 ], 'migrations');
             }
 
             $this->commands([
-                EpaycoCommand::class,
+                EmnifyCommand::class,
             ]);
         }
-
     }
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/epayco.php', 'epayco');
+        $this->mergeConfigFrom(__DIR__ . '/../config/emnify.php', 'emnify');
     }
 
     /**
@@ -54,14 +53,14 @@ class EpaycoServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
-        if (Epayco::$registersRoutes) {
+        if (Emnify::$registersRoutes) {
             Route::group([
-                'middleware' => ['web',VerifyRedirectUrl::class,'auth:sanctum', 'verified'],
-                'prefix' => config('epayco.path'),
-                'namespace' => 'LaravelLatam\Epayco\Http\Controllers',
-                'as' => 'epayco.',
+                'middleware' => ['web', VerifyRedirectUrl::class, 'auth:sanctum', 'verified'],
+                'prefix' => config('emnify.path'),
+                'namespace' => 'LaravelLatam\Emnify\Http\Controllers',
+                'as' => 'emnify.',
             ], function () {
-                $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+                $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
             });
         }
     }
@@ -73,9 +72,9 @@ class EpaycoServiceProvider extends ServiceProvider
      */
     protected function registerResources()
     {
-        $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'epayco');
-        $this->loadViewComponentsAs('epayco', [
+        $this->loadJsonTranslationsFrom(__DIR__ . '/../resources/lang');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'emnify');
+        $this->loadViewComponentsAs('emnify', [
             Layout::class,
             MenuUser::class,
         ]);
@@ -88,8 +87,8 @@ class EpaycoServiceProvider extends ServiceProvider
      */
     protected function registerMigrations()
     {
-        if (Epayco::$runsMigrations && $this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        if (Emnify::$runsMigrations && $this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         }
     }
 
@@ -102,16 +101,16 @@ class EpaycoServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/epayco.php' => $this->app->configPath('epayco.php'),
-            ], 'epayco-config');
+                __DIR__ . '/../config/emnify.php' => $this->app->configPath('emnify.php'),
+            ], 'emnify-config');
 
             $this->publishes([
-                __DIR__.'/../database/migrations' => $this->app->databasePath('migrations'),
-            ], 'epayco-migrations');
+                __DIR__ . '/../database/migrations' => $this->app->databasePath('migrations'),
+            ], 'emnify-migrations');
 
             $this->publishes([
-                __DIR__.'/../resources/views' => $this->app->resourcePath('views/vendor/epayco'),
-            ], 'epayco-views');
+                __DIR__ . '/../resources/views' => $this->app->resourcePath('views/vendor/emnify'),
+            ], 'emnify-views');
         }
     }
     public static function migrationFileExists(string $migrationFileName): bool

@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelLatam\Epayco\Tests;
+namespace LaravelLatam\Emnify\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use LaravelLatam\Epayco\EpaycoServiceProvider;
+use LaravelLatam\Emnify\EmnifyServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,14 +13,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'LaravelLatam\\Epayco\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'LaravelLatam\\Emnify\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            EpaycoServiceProvider::class,
+            EmnifyServiceProvider::class,
         ];
     }
 
@@ -34,7 +34,7 @@ class TestCase extends Orchestra
         ]);
 
         /*
-        include_once __DIR__.'/../database/migrations/create_epayco_table.php.stub';
+        include_once __DIR__.'/../database/migrations/create_Emnify_table.php.stub';
         (new \CreatePackageTable())->up();
         */
     }

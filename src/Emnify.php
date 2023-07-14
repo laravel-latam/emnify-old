@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelLatam\Epayco;
+namespace LaravelLatam\Emnify;
 
-class Epayco
+class Emnify
 {
     
     /**
@@ -11,7 +11,7 @@ class Epayco
      * @var callable
      */
     protected static $formatCurrencyUsing;
-
+    
     /**
      * Indicates if Cashier migrations will be run.
      *

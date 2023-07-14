@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelLatam\Epayco\View\Components;
+namespace LaravelLatam\Emnify\View\Components;
 
 use Illuminate\View\Component;
 
@@ -23,6 +23,6 @@ class MenuUser extends Component
      */
     public function render()
     {
-        return view('epayco::components.menu-user');
+        return view('emnify::components.menu-user');
     }
 }
