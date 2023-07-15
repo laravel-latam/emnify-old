@@ -21,7 +21,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "emnify/emnify-sdk": "dev-master",
+        "emnify/emnify-sdk": "*",
         "firebase/php-jwt": "^6.8",
         "guzzlehttp/guzzle": "^7.7",
         "illuminate/contracts": "^10",

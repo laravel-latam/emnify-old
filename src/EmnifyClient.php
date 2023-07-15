@@ -7,12 +7,6 @@ use Illuminate\Support\Facades\Http;
 class EmnifyClient extends Emnify
 {
     public $emnify;
-    private string $_protocol = 'https';
-    private string $_host = 'cdn.emnify.net';
-    private string $_uri = '/api/';
-    private string $_version = 'v1';
-    private string $_endpoint;
-    private string $_token;
 
     public function boot()
     {
